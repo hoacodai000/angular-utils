@@ -5,32 +5,31 @@ export class TSGuard {
    * @example
    * In Angular:
    * ```
-   *  private tsGuard: TSGuard = new TSGuard();
+   *  import { TSGuard } from './utils/tsGuard';
    *  ...
-   *  this.tsGuard.isNumber(...);
-   *  this.tsGuard.isString(...);
-   *  this.tsGuard.isObject(...);
-   *  this.tsGuard.isStructure(...);
-   *  this.tsGuard.checkType(...);
-   *  this.tsGuard.isEmpty(...);
+   *  TSGuard.isNumber(...);
+   *  TSGuard.isString(...);
+   *  TSGuard.isObject(...);
+   *  TSGuard.isStructure(...);
+   *  TSGuard.checkType(...);
+   *  TSGuard.isEmpty(...);
    *  ...
    * ```
    */
-  constructor() { }
 
-  isNumber(vals: number | any): vals is number {
+  static isNumber(vals: number | any): vals is number {
     return (typeof vals === 'number');
   }
 
-  isString(vals: string | any): vals is string {
+  static isString(vals: string | any): vals is string {
     return (typeof vals === 'string');
   }
 
-  isObject(vals: object | any): vals is object {
+  static isObject(vals: object | any): vals is object {
     return (typeof vals === 'object');
   }
 
-  isStructure<T>(vals: any | { [key: string]: any }, matcher: T): vals is T {
+  static isStructure<T>(vals: any | { [key: string]: any }, matcher: T): vals is T {
     for (let key in matcher) {
       if (typeof vals[key] !== typeof matcher[key]) {
         return false;
@@ -40,7 +39,7 @@ export class TSGuard {
   }
 
   // return type: "Null", "Undefined", "Object", "Array", "Number", "Boolean", "String", "Function", "RegExp"
-  checkType(vals: any): string {
+  static checkType(vals: any): string {
     return (
       vals === null
         ? 'Null'
@@ -50,7 +49,7 @@ export class TSGuard {
     );
   }
 
-  isEmpty(value: any): boolean {
+  static isEmpty(value: any): boolean {
     // (value == null) check null or undefined.
     return (
       // Null

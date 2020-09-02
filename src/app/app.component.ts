@@ -12,9 +12,7 @@ import { Clone } from './utils/clone';
 export class AppComponent implements OnInit {
   public title = 'angular-utils';
 
-  private tsGuard: TSGuard = new TSGuard();
   private subSink: SubSink = new SubSink();
-  private _clone: Clone = new Clone();
 
   constructor() { }
 

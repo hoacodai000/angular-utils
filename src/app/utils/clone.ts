@@ -7,14 +7,13 @@ export class Clone {
    * @example
    * In Angular:
    * ```
-   *  private _clone: Clone = new Clone();
+   *  import { Clone } from './utils/clone';
    *  ...
-   *  this._clone.clone(...);
+   *  Clone.clone(...);
    *  ...
    * ```
    */
-  constructor() { }
-  private _cloneRegExp(pattern: RegExp): RegExp {
+  private static _cloneRegExp(pattern: RegExp): RegExp {
     return new RegExp(
       pattern.source,
       (pattern.global ? 'g' : '') +
@@ -25,7 +24,7 @@ export class Clone {
     );
   }
 
-  private _clone(value: any, refFrom: any[], refTo: any[], deep: boolean): any {
+  private static _clone(value: any, refFrom: any[], refTo: any[], deep: boolean): any {
     const copy: (copiedValue: any) => any = (copiedValue: any): any => {
       const len = refFrom.length;
       let idx = 0;
@@ -49,7 +48,7 @@ export class Clone {
       return copiedValue;
     }
 
-    switch (new TSGuard().checkType(value)) {
+    switch (TSGuard.checkType(value)) {
       case 'Object':
         return copy({});
       case 'Array':
@@ -63,7 +62,7 @@ export class Clone {
     }
   }
 
-  clone<T extends any>(value: T): T {
+  static clone<T extends any>(value: T): T {
     return (
       value != null && typeof value === 'function'
         ? value
