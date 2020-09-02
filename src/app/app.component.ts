@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { TSGuard } from './utils/tsGuard';
 import { SubSink } from './utils/subsink';
+import { Clone } from './utils/clone';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,10 @@ export class AppComponent implements OnInit {
 
   private tsGuard: TSGuard = new TSGuard();
   private subSink: SubSink = new SubSink();
+  private _clone: Clone = new Clone();
 
   constructor() { }
 
   ngOnInit(): void {
-
   }
 }
