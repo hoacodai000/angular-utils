@@ -62,7 +62,7 @@ export class Clone {
     }
   }
 
-  static clone<T extends any>(value: T): T {
+  public static clone<T extends any>(value: T): T {
     return (
       value != null && typeof value === 'function'
         ? value

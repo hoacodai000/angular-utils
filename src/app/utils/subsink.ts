@@ -42,7 +42,7 @@ export class SubSink {
    * @example
    *  this.subs.add(observable$.subscribe(...));
    */
-  add(...subscriptions: SubscriptionLike[]): void {
+  public add(...subscriptions: SubscriptionLike[]): void {
     this._subs = this._subs.concat(subscriptions);
   }
 
@@ -62,7 +62,7 @@ export class SubSink {
    *    this.subs.unsubscribe();
    *  }
    */
-  unsubscribe(): void {
+  public unsubscribe(): void {
     this._subs.forEach(sub => sub && isFunction(sub.unsubscribe) && sub.unsubscribe());
     this._subs = [];
   }

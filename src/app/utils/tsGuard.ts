@@ -17,19 +17,19 @@ export class TSGuard {
    * ```
    */
 
-  static isNumber(vals: number | any): vals is number {
+  public static isNumber(vals: number | any): vals is number {
     return (typeof vals === 'number');
   }
 
-  static isString(vals: string | any): vals is string {
+  public static isString(vals: string | any): vals is string {
     return (typeof vals === 'string');
   }
 
-  static isObject(vals: object | any): vals is object {
+  public static isObject(vals: object | any): vals is object {
     return (typeof vals === 'object');
   }
 
-  static isStructure<T>(vals: any | { [key: string]: any }, matcher: T): vals is T {
+  public static isStructure<T>(vals: any | { [key: string]: any }, matcher: T): vals is T {
     for (let key in matcher) {
       if (typeof vals[key] !== typeof matcher[key]) {
         return false;
@@ -39,7 +39,7 @@ export class TSGuard {
   }
 
   // return type: "Null", "Undefined", "Object", "Array", "Number", "Boolean", "String", "Function", "RegExp"
-  static checkType(vals: any): string {
+  public static checkType(vals: any): string {
     return (
       vals === null
         ? 'Null'
@@ -49,7 +49,7 @@ export class TSGuard {
     );
   }
 
-  static isEmpty(value: any): boolean {
+  public static isEmpty(value: any): boolean {
     // (value == null) check null or undefined.
     return (
       // Null
