@@ -12,6 +12,6 @@ export class Util {
    * @returns {string[]}
    */
   public static getAllStringValueOfEnum<T>(t: T): string[] {
-    return Object.keys(t).map((key) => t[key]).filter((val: string | number) => typeof val === 'string');
+    return Object.keys(t).map((key) => t[key]).filter((value: string | number) => typeof value === 'string');
   }
 }

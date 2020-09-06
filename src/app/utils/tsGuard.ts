@@ -17,21 +17,41 @@ export class TSGuard {
    * ```
    */
 
-  public static isNumber(vals: number | any): vals is number {
-    return (typeof vals === 'number');
+  public static isNull(value: any): value is null {
+    return value === null;
   }
 
-  public static isString(vals: string | any): vals is string {
-    return (typeof vals === 'string');
+  public static isUndefined(value: any): value is undefined {
+    return value === undefined;
   }
 
-  public static isObject(vals: object | any): vals is object {
-    return (typeof vals === 'object');
+  public static isNil(value: any): value is null | undefined {
+    return value === null || value === undefined;
   }
 
-  public static isStructure<T>(vals: any | { [key: string]: any }, matcher: T): vals is T {
+  public static isNumber(value: number | any): value is number {
+    return (typeof value === 'number');
+  }
+
+  public static isString(value: string | any): value is string {
+    return (typeof value === 'string');
+  }
+
+  public static isObject(value: object | any): value is object {
+    return (typeof value === 'object');
+  }
+
+  public static isArray(value: any): boolean {
+    return Array.isArray(value);
+  }
+
+  public static isFunction(value: any): boolean {
+    return typeof value === 'function';
+  }
+
+  public static isStructure<T>(value: any | { [key: string]: any }, matcher: T): value is T {
     for (let key in matcher) {
-      if (typeof vals[key] !== typeof matcher[key]) {
+      if (typeof value[key] !== typeof matcher[key]) {
         return false;
       }
     }
@@ -39,13 +59,13 @@ export class TSGuard {
   }
 
   // return type: "Null", "Undefined", "Object", "Array", "Number", "Boolean", "String", "Function", "RegExp"
-  public static checkType(vals: any): string {
+  public static checkType(value: any): string {
     return (
-      vals === null
+      value === null
         ? 'Null'
-        : vals === undefined
+        : value === undefined
           ? 'Undefined'
-          : Object.prototype.toString.call(vals).slice(8, -1)
+          : Object.prototype.toString.call(value).slice(8, -1)
     );
   }
 

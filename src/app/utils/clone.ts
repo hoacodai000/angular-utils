@@ -26,8 +26,8 @@ export class Clone {
 
   private static _clone(value: any, refFrom: any[], refTo: any[], deep: boolean): any {
     const copy: (copiedValue: any) => any = (copiedValue: any): any => {
-      const len = refFrom.length;
-      let idx = 0;
+      const len: number = refFrom.length;
+      let idx: number = 0;
 
       while (idx < len) {
         if (value === refFrom[idx]) {
