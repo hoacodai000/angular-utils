@@ -31,4 +31,28 @@ export class Util {
     };
     return collection[value];
   }
+
+  /**
+   * titleCase(...)
+   * @param str
+   * @returns {string}
+   */
+  public static titleCase(str: string): string {
+    if (!str) return '';
+    return str.replace(/\w\S*/g, (txt: string) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+  }
+
+  /**
+   * abbreviate(...)
+   * @param str
+   * @returns {string}
+   */
+  public static abbreviate(str: string, abbrLettersCount: number = 1): string {
+    if (!str) return '';
+    const words: string[] = str.replace(/([a-z\xE0-\xFF])([A-Z\xC0\xDF])/g, '$1 $2').split(' ');
+    return words.reduce((res, word) => {
+      res += word.substr(0, abbrLettersCount);
+      return res;
+    }, '');
+  }
 }

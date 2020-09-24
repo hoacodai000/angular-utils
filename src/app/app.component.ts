@@ -4,6 +4,7 @@ import { TSGuard } from './utils/tsGuard';
 import { SubSink } from './utils/subsink';
 import { Clone } from './utils/clone';
 import { Util } from './utils/util';
+import { RandomGenerator } from './utils/random-generator';
 
 @Component({
   selector: 'app-root',
