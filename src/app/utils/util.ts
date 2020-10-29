@@ -55,4 +55,19 @@ export class Util {
       return res;
     }, '');
   }
+
+  /**
+   * strToNumber(...)
+   * @param value
+   * @returns {number}
+   */
+  public static strToNumber(value: number | string): number {
+    if (typeof value === 'string' && !isNaN(Number(value) - parseFloat(value))) {
+      return Number(value);
+    }
+    if (typeof value !== 'number') {
+      throw new Error(`${value} is not a number`);
+    }
+    return value;
+  }
 }
